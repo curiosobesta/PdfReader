@@ -107,49 +107,4 @@ public class QueriesSessions {
         db.close();
         return al;
     }
-
-    public SessionDetails getSessionDetails(int sessionId) {
-        //Open connection to read only
-        SQLiteDatabase db = dbCon.getReadableDatabase();
-        String selectQuery =  "SELECT  " +
-                "*"+
-                " FROM " + Globals.TABLE_SESSIONS +
-                " WHERE " + Globals.SESSIONS_ID + " = " + sessionId;
-
-        Cursor cursor = db.rawQuery(selectQuery, null);
-        // looping through all rows and adding to list
-
-        cursor.moveToFirst();
-        SessionDetails sessionDetails = new SessionDetails();
-        sessionDetails.setSessionId(cursor.getInt(cursor.getColumnIndex(Globals.SESSIONS_ID)));
-        sessionDetails.setDoc(cursor.getString(cursor.getColumnIndex(Globals.SESSIONS_DOC)));
-        sessionDetails.setDate(new Date(cursor.getLong(cursor.getColumnIndex(Globals.SESSIONS_DATE))));
-
-        int stars[] = new int[5];
-        stars[0] = cursor.getInt(cursor.getColumnIndex(Globals.STAR1));
-        stars[1] = cursor.getInt(cursor.getColumnIndex(Globals.STAR2));
-        stars[2] = cursor.getInt(cursor.getColumnIndex(Globals.STAR3));
-        stars[3] = cursor.getInt(cursor.getColumnIndex(Globals.STAR4));
-        stars[4] = cursor.getInt(cursor.getColumnIndex(Globals.STAR5));
-        sessionDetails.setStars(stars);
-
-        cursor.close();
-        db.close();
-        return sessionDetails;
-    }
-
-    public void updateStars(int[] stars){
-        SQLiteDatabase db = dbCon.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        values.put(Globals.STAR1, stars[0]);
-        values.put(Globals.STAR2, stars[1]);
-        values.put(Globals.STAR3, stars[2]);
-        values.put(Globals.STAR4, stars[3]);
-        values.put(Globals.STAR5, stars[4]);
-
-        // It's a good practice to use parameter ?, instead of concatenate string
-        db.update(Globals.TABLE_SESSIONS, values, Globals.SESSIONS_ID + "= ?", new String[]{""+Globals.sessionId});
-        db.close();
-    }
 }

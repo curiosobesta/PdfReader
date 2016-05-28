@@ -11,6 +11,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
@@ -22,11 +23,7 @@ import com.nononsenseapps.filepicker.FilePickerActivity;
 import sagar.pdfreader.Globals;
 import sagar.pdfreader.adapters.RecentDocAdapter;
 import sagar.pdfreader.db.QueriesSessions;
-import sagar.pdfreader.utils.ShareBucketBuilder;
 import sagar.pdfreader.utils.Sleeper;
-import java.io.File;
-import java.io.IOException;
-import java.util.Date;
 
 import sagar.pdfreader.R;
 

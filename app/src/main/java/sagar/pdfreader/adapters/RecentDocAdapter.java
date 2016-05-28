@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -32,7 +33,6 @@ public class RecentDocAdapter{
     Context context = null;
     ArrayList<RecentDoc> recentDocs;
     Callback callback = null;
-
 
     public RecentDocAdapter(Context context, LinearLayout layout, Callback callback){
         this.context = context;
@@ -74,11 +74,12 @@ public class RecentDocAdapter{
             tvDate.setText(date);
             //-- Add RecentDoc Date And Time
 
-            cardView.setId(count);
+            cardView.setId(count++);
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int i = v.getId();
+                    Log.e("My Tag", "Id: "+i);
                     RecentDoc rd = recentDocs.get(i);
                     callback.onCardClicked(rd.getName());
                 }
@@ -89,7 +90,7 @@ public class RecentDocAdapter{
     }
 
     public void notifyChange(){
-        //recentDocs = new QueriesRecentDocs(context).getDocs();
+
         recentDocs = new QueriesSessions(context).getRecDocs();
         layout.removeAllViews();
         addViews();

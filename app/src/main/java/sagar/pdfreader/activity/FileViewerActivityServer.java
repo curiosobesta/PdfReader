@@ -35,7 +35,8 @@ public class FileViewerActivityServer extends AppCompatActivity {
         con = pdfView.fromFile(myFile)
                 .defaultPage(1)
                 .showMinimap(false)
-                .enableSwipe(true);
+                .enableSwipe(true)
+                .swipeVertical(true);
         con.load();
         //-- Open Pdf
 

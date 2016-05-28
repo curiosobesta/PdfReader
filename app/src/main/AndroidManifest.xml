@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <supports-screens
         android:anyDensity="true"
@@ -26,11 +27,6 @@
         <activity
             android:name=".activity.FileViewerActivityServer"
             android:label="@string/title_activity_file_viewer"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name=".activity.FileViewerActivityClient"
-            android:label="@string/title_activity_file_viewer_activity_client"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
@@ -56,20 +52,8 @@
         </activity>
 
         <activity
-            android:name=".SplashActivity"
-            android:label="@string/title_activity_splash"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name=".TestDialogActivity"
-            android:label="@string/title_activity_test_dialog"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name=".activity.SessionDetailsActivity"
-            android:label="@string/title_activity_session_details"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
     </application>
-
 
 </manifest>
